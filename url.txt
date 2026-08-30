@@ -1,0 +1,1 @@
+DATABASE_URL=postgresql://projectvyper-dev:VyperDB2026Secure@172.16.0.1:5432/projectvyper-db?schema=public

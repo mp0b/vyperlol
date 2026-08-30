@@ -36,34 +36,47 @@ import { setActiveProfileAction } from "@/server/actions/profiles";
 import type { ProfileSummary } from "@/lib/dashboard/active-profile";
 import { initials } from "@/lib/utils";
 
-const NAV = [
-  {
-    label: "Espace",
-    items: [
-      { href: "/dashboard", label: "Vue d’ensemble", icon: LayoutDashboard, exact: true },
-      { href: "/dashboard/editor", label: "Personnaliser", icon: Palette },
-      { href: "/dashboard/badges", label: "Badges", icon: BadgeCheck },
-    ],
-  },
-  {
-    label: "Bibliothèque",
-    items: [
-      { href: "/dashboard/media", label: "Médias", icon: ImageIcon },
-      { href: "/dashboard/domains", label: "Domaines", icon: Globe2 },
-    ],
-  },
-  {
-    label: "Données",
-    items: [{ href: "/leaderboard", label: "Classement", icon: BarChart3 }],
-  },
-];
+import { ShieldAlert } from "lucide-react";
 
-interface DashboardUser {
+export type DashboardUser = {
   email: string;
   displayName: string | null;
   avatarUrl: string | null;
   role: string;
 }
+
+const getNav = (role: string) => {
+  const nav = [
+    {
+      label: "Espace",
+      items: [
+        { href: "/dashboard", label: "Vue d’ensemble", icon: LayoutDashboard, exact: true },
+        { href: "/dashboard/editor", label: "Personnaliser", icon: Palette },
+        { href: "/dashboard/badges", label: "Badges", icon: BadgeCheck },
+      ],
+    },
+    {
+      label: "Bibliothèque",
+      items: [
+        { href: "/dashboard/media", label: "Médias", icon: ImageIcon },
+        { href: "/dashboard/domains", label: "Domaines", icon: Globe2 },
+      ],
+    },
+    {
+      label: "Données",
+      items: [{ href: "/leaderboard", label: "Classement", icon: BarChart3 }],
+    },
+  ];
+
+  if (role === "ADMIN" || role === "OWNER") {
+    nav.push({
+      label: "Administration",
+      items: [{ href: "/dashboard/admin", label: "Gérer les utilisateurs", icon: ShieldAlert }],
+    });
+  }
+
+  return nav;
+};
 
 export function DashboardShell({
   user,
@@ -82,7 +95,7 @@ export function DashboardShell({
 
   const navContent = (
     <nav className="flex flex-col gap-6" aria-label="Navigation du tableau de bord">
-      {NAV.map((group) => (
+      {getNav(user.role).map((group) => (
         <section key={group.label}>
           <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-[#80786f]">{group.label}</p>
           <div className="grid gap-1">

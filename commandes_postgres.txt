@@ -1,0 +1,19 @@
+### 1. VÉRIFIER LA BASE DE DONNÉES ###
+
+# Lister toutes les bases de données (vérifier que projectvyper-db est là) :
+sudo -u postgres psql -c "\l"
+
+# Lister tous les utilisateurs (vérifier que projectvyper-dev est là) :
+sudo -u postgres psql -c "\du"
+
+
+### 2. CRÉER LA BASE DE DONNÉES MANUELLEMENT ###
+
+# Créer l'utilisateur avec le mot de passe :
+sudo -u postgres psql -c "CREATE USER \"projectvyper-dev\" WITH PASSWORD 'VyperDB2026Secure';"
+
+# Créer la base de données et l'attribuer à l'utilisateur :
+sudo -u postgres psql -c "CREATE DATABASE \"projectvyper-db\" OWNER \"projectvyper-dev\";"
+
+# Donner tous les droits à l'utilisateur sur cette base :
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE \"projectvyper-db\" TO \"projectvyper-dev\";"
