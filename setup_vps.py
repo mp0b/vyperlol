@@ -9,7 +9,7 @@ ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 ssh.connect(H, username=U, password=P)
 
 ssh.exec_command("apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y postgresql postgresql-contrib")
-sql = f"CREATE DATABASE {D}; CREATE USER {DU} WITH PASSWORD '{DP}'; ALTER ROLE {DU} SET client_encoding TO 'utf8'; ALTER ROLE {DU} SET default_transaction_isolation TO 'read committed'; ALTER ROLE {DU} SET timezone TO 'UTC'; GRANT ALL PRIVILEGES ON DATABASE {D} TO {DU}; ALTER DATABASE {D} OWNER TO {DU}; GRANT ALL ON SCHEMA public TO {DU};"
+sql = f"DROP DATABASE IF EXISTS {D}; DROP ROLE IF EXISTS {DU}; CREATE DATABASE {D}; CREATE USER {DU} WITH PASSWORD '{DP}'; ALTER ROLE {DU} SET client_encoding TO 'utf8'; ALTER ROLE {DU} SET default_transaction_isolation TO 'read committed'; ALTER ROLE {DU} SET timezone TO 'UTC'; GRANT ALL PRIVILEGES ON DATABASE {D} TO {DU}; ALTER DATABASE {D} OWNER TO {DU}; GRANT ALL ON SCHEMA public TO {DU};"
 ssh.exec_command(f"sudo -u postgres psql -c \"{sql}\"")
 
 ssh.exec_command("mkdir -p /root/vyperlol")
