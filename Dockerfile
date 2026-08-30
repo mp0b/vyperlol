@@ -45,16 +45,16 @@ ENV NODE_ENV=production
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy necessary files
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/prisma ./prisma
+# Set correct permissions for Next.js cache
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
 
-# Set correct permissions
-RUN chown -R nextjs:nodejs /app
+# Copy necessary files with optimal chown directly (fast)
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+# Next.js standalone includes its own minimal node_modules, no need to copy the giant root one
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
 
 USER nextjs
 
