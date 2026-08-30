@@ -40,6 +40,8 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+import { GlobalBg } from "@/components/global-bg";
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -49,6 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     >
       <body className="min-h-full">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
+          <GlobalBg />
           {children}
           <Toaster />
         </ThemeProvider>

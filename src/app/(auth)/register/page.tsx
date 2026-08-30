@@ -19,7 +19,6 @@ export default async function RegisterPage() {
         <CardDescription className="text-gray-400 mt-2">Create your Vyper — it&apos;s free, forever</CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
-        <OAuthButtons />
         <RegisterForm />
         <p className="text-center text-sm text-gray-400 mt-4">
           Already have an account?{" "}

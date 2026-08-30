@@ -38,7 +38,6 @@ export default async function LoginPage({
         {error && (
           <p className="rounded-md bg-destructive/10 px-3 py-2 text-sm text-destructive">{error}</p>
         )}
-        <OAuthButtons next={sp.next} />
         <LoginForm />
         <p className="text-center text-sm text-gray-400 mt-4">
           Don&apos;t have an account?{" "}

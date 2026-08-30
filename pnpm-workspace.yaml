@@ -12,6 +12,7 @@ allowBuilds:
   prisma: true
   sharp: true
   unrs-resolver: true
+  '@embedded-postgres/linux-arm64': set this to true or false
 onlyBuiltDependencies:
   - "@prisma/client"
   - "@prisma/engines"

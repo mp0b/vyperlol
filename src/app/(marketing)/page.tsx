@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { HalftoneBg } from "@/components/marketing/halftone-bg";
 import { SiteHeader } from "@/components/marketing/site-header";
 import { TrustedMarquee } from "@/components/marketing/trusted-marquee";
 import { motion } from "framer-motion";
@@ -78,8 +77,6 @@ function ClaimBox() {
 export default function LandingPage() {
   return (
     <div className="flex flex-col w-full min-h-screen">
-      <HalftoneBg />
-
       <div className="flex-1 w-full relative z-10 flex flex-col pt-32 pb-16">
         
         {/* Hero Section */}

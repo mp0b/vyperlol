@@ -4,6 +4,8 @@ import { Check, Palette, Sparkles } from "lucide-react";
 import { THEME_PRESETS } from "@/lib/theme/presets";
 import { cn } from "@/lib/utils";
 import { ColorField, FieldGroup, SelectField, SliderField, SwitchField, TextField } from "./controls";
+import { ImageField } from "./image-field";
+import { VideoField } from "./video-field";
 import { useEditor } from "./editor-provider";
 
 const FONT_OPTIONS = [
@@ -95,15 +97,19 @@ export function ThemeSettingsSection() {
             <SelectField label="Type de fond" value={theme.background.type} options={BACKGROUND_OPTIONS} onChange={(value) => mutate((next) => { next.theme.background.type = value; })} />
             <SelectField label="Effet" value={theme.background.effect} options={EFFECT_OPTIONS} onChange={(value) => mutate((next) => { next.theme.background.effect = value; })} />
           </div>
-          {(theme.background.type === "image" || theme.background.type === "video") && (
-            <TextField
-              label={theme.background.type === "video" ? "URL de la vidéo" : "URL de l’image"}
-              value={theme.background.type === "video" ? theme.background.videoUrl ?? "" : theme.background.imageUrl ?? ""}
-              placeholder="https://…"
-              onChange={(value) => mutate((next) => {
-                if (next.theme.background.type === "video") next.theme.background.videoUrl = value;
-                else next.theme.background.imageUrl = value;
-              })}
+          {theme.background.type === "image" && (
+            <ImageField
+              label="Image de fond"
+              value={theme.background.imageUrl ?? ""}
+              aspect="wide"
+              onChange={(value) => mutate((next) => { next.theme.background.imageUrl = value; })}
+            />
+          )}
+          {theme.background.type === "video" && (
+            <VideoField
+              label="Vidéo de fond"
+              value={theme.background.videoUrl ?? ""}
+              onChange={(value) => mutate((next) => { next.theme.background.videoUrl = value; })}
             />
           )}
           <SliderField label="Opacité du fond" value={Math.round(theme.background.opacity * 100)} min={0} max={100} suffix=" %" onChange={(value) => mutate((next) => { next.theme.background.opacity = value / 100; })} />

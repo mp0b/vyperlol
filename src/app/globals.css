@@ -226,7 +226,7 @@
    Kept separate from public-profile tokens: the dashboard must stay highly
    legible while every public page remains individually themed. */
 .vy-dashboard {
-  --vy-dash-canvas: #090908;
+  --vy-dash-canvas: transparent;
   --vy-dash-panel: rgba(21, 20, 18, 0.82);
   --vy-dash-panel-strong: rgba(29, 27, 24, 0.92);
   --vy-dash-border: rgba(255, 244, 225, 0.09);
@@ -237,23 +237,7 @@
   isolation: isolate;
   min-height: 100svh;
   color: #fffaf4;
-  background:
-    radial-gradient(70rem 42rem at -5% -15%, rgba(255, 137, 53, 0.12), transparent 60%),
-    radial-gradient(54rem 34rem at 102% 12%, rgba(226, 78, 49, 0.08), transparent 64%),
-    var(--vy-dash-canvas);
-}
-.vy-dashboard::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: 0.34;
-  background-image:
-    linear-gradient(rgba(255, 246, 235, 0.028) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 246, 235, 0.028) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: linear-gradient(to bottom, black, transparent 78%);
+  background: transparent;
 }
 .vy-dashboard ::selection { background: rgba(255, 154, 61, 0.32); }
 .vy-dashboard input,
