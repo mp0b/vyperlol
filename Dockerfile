@@ -1,7 +1,7 @@
 # Multi-stage Dockerfile for Next.js application with Prisma
 
 # Stage 1: Base
-FROM node:20-alpine AS base
+FROM node:22-alpine AS base
 
 # Stage 2: Dependencies
 FROM base AS deps
@@ -39,10 +39,7 @@ RUN pnpm build
 FROM base AS runner
 WORKDIR /app
 
-ENV NODE_ENV production
-
-# Install pnpm
-RUN npm install -g pnpm@11.24.0
+ENV NODE_ENV=production
 
 # Create non-root user
 RUN addgroup --system --gid 1001 nodejs
@@ -63,8 +60,8 @@ USER nextjs
 
 EXPOSE 3000
 
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
 
 # Start the application
-CMD ["pnpm", "start"]
+CMD ["node", "server.js"]
