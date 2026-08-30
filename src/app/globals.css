@@ -223,86 +223,107 @@
 }
 
 /* ── Vyper dashboard ──────────────────────────────────────────────────────
-   Kept separate from public-profile tokens: the dashboard must stay highly
-   legible while every public page remains individually themed. */
+   Edgy, dark, glassmorphic aesthetic (guns.lol vibe). Pure blacks, sleek borders. */
 .vy-dashboard {
-  --vy-dash-canvas: transparent;
-  --vy-dash-panel: rgba(21, 20, 18, 0.82);
-  --vy-dash-panel-strong: rgba(29, 27, 24, 0.92);
-  --vy-dash-border: rgba(255, 244, 225, 0.09);
-  --vy-dash-muted: #a79f95;
-  --vy-dash-accent: #ff9a3d;
-  --vy-dash-accent-2: #f56b4b;
+  --vy-dash-canvas: #000000;
+  --vy-dash-panel: rgba(10, 10, 10, 0.7);
+  --vy-dash-panel-strong: rgba(15, 15, 15, 0.9);
+  --vy-dash-border: rgba(255, 255, 255, 0.08);
+  --vy-dash-muted: #888888;
+  --vy-dash-accent: #ffffff;
+  --vy-dash-accent-2: #cccccc;
   position: relative;
   isolation: isolate;
   min-height: 100svh;
-  color: #fffaf4;
-  background: transparent;
+  color: #ffffff;
+  background: var(--vy-dash-canvas);
 }
-.vy-dashboard ::selection { background: rgba(255, 154, 61, 0.32); }
+.vy-dashboard ::selection { background: rgba(255, 255, 255, 0.2); }
 .vy-dashboard input,
 .vy-dashboard textarea,
 .vy-dashboard select,
 .vy-dashboard [role="combobox"] {
-  color: #fffaf4;
-  background-color: rgba(7, 7, 6, 0.44);
-  border-color: rgba(255, 244, 225, 0.12);
+  color: #ffffff;
+  background-color: rgba(20, 20, 20, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
 }
 .vy-dashboard input::placeholder,
-.vy-dashboard textarea::placeholder { color: #827a70; }
+.vy-dashboard textarea::placeholder { color: #666666; }
 .vy-dashboard [data-radix-popper-content-wrapper] { z-index: 80 !important; }
 
 .vy-dashboard-sidebar {
-  background: linear-gradient(180deg, rgba(18, 17, 15, 0.97), rgba(10, 10, 9, 0.92));
+  background: rgba(5, 5, 5, 0.95);
   border-color: var(--vy-dash-border);
-  box-shadow: 20px 0 80px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(20px);
 }
 .vy-dashboard-header {
-  background: linear-gradient(180deg, rgba(15, 14, 13, 0.86), rgba(15, 14, 13, 0.66));
+  background: rgba(5, 5, 5, 0.85);
   border-color: var(--vy-dash-border);
-  backdrop-filter: blur(22px) saturate(1.35);
-  -webkit-backdrop-filter: blur(22px) saturate(1.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 .vy-dashboard-nav-link {
-  color: #a9a197;
+  color: #888888;
   border: 1px solid transparent;
+  font-family: var(--font-mono, monospace);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
 }
 .vy-dashboard-nav-link:hover {
-  color: #fffaf4;
-  background: rgba(255, 255, 255, 0.055);
-  border-color: rgba(255, 244, 225, 0.06);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.05);
 }
 .vy-dashboard-nav-link[data-active="true"] {
-  color: #fffaf4;
-  border-color: rgba(255, 166, 83, 0.22);
-  background: linear-gradient(135deg, rgba(255, 154, 61, 0.2), rgba(245, 107, 75, 0.08));
-  box-shadow: inset 0 1px rgba(255, 237, 209, 0.07), 0 7px 22px rgba(255, 119, 45, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 .vy-dashboard-panel {
   border: 1px solid var(--vy-dash-border);
-  background: linear-gradient(145deg, rgba(32, 30, 27, 0.74), rgba(15, 15, 14, 0.86));
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.035), 0 22px 50px rgba(0, 0, 0, 0.14);
-  backdrop-filter: blur(18px) saturate(1.16);
-  -webkit-backdrop-filter: blur(18px) saturate(1.16);
+  background: rgba(12, 12, 12, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
 }
-.vy-dashboard-panel:hover { border-color: rgba(255, 184, 112, 0.18); }
+.vy-dashboard-panel:hover { border-color: rgba(255, 255, 255, 0.15); }
+
 .vy-action-primary {
-  color: #1b0d05 !important;
-  border: 1px solid rgba(255, 226, 187, 0.4) !important;
-  background: linear-gradient(135deg, #ffd17f, #ff9a3d 50%, #ef6948) !important;
-  box-shadow: 0 10px 25px rgba(255, 131, 48, 0.2), inset 0 1px rgba(255, 255, 255, 0.45);
+  color: #000000 !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  background: #ffffff !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  transition: all 0.2s ease;
 }
 .vy-action-primary:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 14px 38px rgba(255, 131, 48, 0.34), 0 0 0 4px rgba(255, 154, 61, 0.09), inset 0 1px rgba(255, 255, 255, 0.5);
+  background: #e0e0e0 !important;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+  transform: translateY(-1px);
 }
 .vy-action-secondary {
-  color: #fffaf4 !important;
-  border-color: rgba(255, 244, 225, 0.13) !important;
-  background: rgba(255, 255, 255, 0.045) !important;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  background: rgba(255, 255, 255, 0.03) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  backdrop-filter: blur(10px);
 }
-.vy-action-secondary:hover { background: rgba(255, 255, 255, 0.08) !important; border-color: rgba(255, 193, 128, 0.28) !important; }
+.vy-action-secondary:hover { 
+  background: rgba(255, 255, 255, 0.08) !important; 
+  border-color: rgba(255, 255, 255, 0.2) !important; 
+}
+
 .vy-builder-tabs {
   min-height: 52px;
   display: grid;
@@ -310,46 +331,44 @@
   gap: 6px;
   padding: 6px;
   border: 1px solid var(--vy-dash-border);
-  border-radius: 18px;
-  background: rgba(8, 8, 7, 0.48);
+  border-radius: 12px;
+  background: rgba(5, 5, 5, 0.8);
 }
 .vy-builder-tabs [role="tab"] {
   min-height: 38px;
-  color: #a9a197;
-  border-radius: 12px;
+  color: #888888;
+  border-radius: 8px;
+  font-family: var(--font-mono, monospace);
+  text-transform: uppercase;
+  font-size: 0.75rem;
 }
 .vy-builder-tabs [role="tab"][data-state="active"] {
-  color: #fffaf4;
-  background: linear-gradient(135deg, rgba(255, 154, 61, 0.22), rgba(245, 107, 75, 0.11));
-  box-shadow: inset 0 1px rgba(255, 243, 224, 0.1), 0 6px 18px rgba(0, 0, 0, 0.16);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
 }
 .vy-builder-savebar {
   position: sticky;
   top: 4rem;
   z-index: 20;
   border-color: var(--vy-dash-border);
-  background: rgba(15, 14, 13, 0.8);
-  backdrop-filter: blur(18px) saturate(1.3);
-  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
-/* ── Vyper public surfaces ─────────────────────────────────────────────────
-   Public product pages use the same warm Solar language as the dashboard, but
-   stay static: no heavy canvas or permanently running background animation. */
+/* ── Vyper public surfaces ───────────────────────────────────────────────── */
 .vy-public-page {
-  --vy-public-text: #fffaf4;
-  --vy-public-muted: #aaa198;
-  --vy-public-border: rgba(255, 244, 225, 0.1);
-  --vy-public-accent: #ffad5c;
+  --vy-public-text: #ffffff;
+  --vy-public-muted: #888888;
+  --vy-public-border: rgba(255, 255, 255, 0.1);
+  --vy-public-accent: #ffffff;
   position: relative;
   isolation: isolate;
   min-height: 100svh;
   overflow: hidden;
   color: var(--vy-public-text);
-  background:
-    radial-gradient(56rem 36rem at 8% -10%, rgba(255, 152, 59, 0.13), transparent 64%),
-    radial-gradient(48rem 34rem at 103% 18%, rgba(239, 105, 72, 0.1), transparent 66%),
-    #090908;
+  background: #000000;
 }
 .vy-public-page::before {
   content: "";
@@ -357,49 +376,52 @@
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  opacity: 0.38;
+  opacity: 0.5;
   background-image:
-    linear-gradient(rgba(255, 246, 235, 0.024) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 246, 235, 0.024) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: linear-gradient(to bottom, black, transparent 78%);
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 .vy-public-panel {
   border: 1px solid var(--vy-public-border);
-  background: linear-gradient(145deg, rgba(34, 31, 27, 0.74), rgba(15, 15, 13, 0.9));
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04), 0 24px 60px rgba(0, 0, 0, 0.18);
-  backdrop-filter: blur(18px) saturate(1.16);
-  -webkit-backdrop-filter: blur(18px) saturate(1.16);
+  background: rgba(10, 10, 10, 0.7);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
 }
-.vy-public-panel:hover { border-color: rgba(255, 187, 111, 0.24); }
+.vy-public-panel:hover { border-color: rgba(255, 255, 255, 0.2); }
 .vy-public-kicker {
-  color: #ffd6aa;
-  font-size: 0.7rem;
+  color: #ffffff;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 .vy-public-action {
-  color: #211006 !important;
-  border: 1px solid rgba(255, 230, 194, 0.38) !important;
-  background: linear-gradient(135deg, #ffd485, #ffad5c 52%, #f07152) !important;
-  box-shadow: 0 12px 28px rgba(255, 145, 53, 0.22), inset 0 1px rgba(255, 255, 255, 0.45);
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
+  background: #ffffff !important;
+  font-family: var(--font-mono, monospace);
+  text-transform: uppercase;
 }
 .vy-public-action:hover {
-  filter: brightness(1.06);
-  box-shadow: 0 16px 42px rgba(255, 145, 53, 0.37), 0 0 0 4px rgba(255, 173, 92, 0.1), inset 0 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
 }
 .vy-public-action-muted {
-  color: #fffaf4 !important;
+  color: #ffffff !important;
   border: 1px solid var(--vy-public-border) !important;
-  background: rgba(255, 255, 255, 0.045) !important;
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05) !important;
+  font-family: var(--font-mono, monospace);
+  text-transform: uppercase;
 }
-.vy-public-action-muted:hover { background: rgba(255, 255, 255, 0.08) !important; }
+.vy-public-action-muted:hover { background: rgba(255, 255, 255, 0.1) !important; }
 .vy-public-avatar {
-  background: linear-gradient(145deg, rgba(255, 192, 119, 0.22), rgba(238, 95, 70, 0.13));
-  border: 1px solid rgba(255, 226, 192, 0.16);
-  box-shadow: inset 0 1px rgba(255, 255, 255, 0.12), 0 8px 22px rgba(0, 0, 0, 0.22);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 @media (max-width: 640px) {

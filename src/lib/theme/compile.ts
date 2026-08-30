@@ -36,9 +36,9 @@ function resolveCard(card: ThemeConfig["profileCard"], accent: string) {
 
   switch (card.style) {
     case "solid":
-      bg = card.background ?? "#14141c";
+      bg = card.background ?? "#050505";
       blur = 0;
-      border = card.border ? `1px solid ${card.borderColor ?? "rgba(255,255,255,.08)"}` : "none";
+      border = card.border ? `1px solid ${card.borderColor ?? "rgba(255,255,255,.05)"}` : "none";
       break;
     case "minimal":
       bg = "transparent";
@@ -51,27 +51,27 @@ function resolveCard(card: ThemeConfig["profileCard"], accent: string) {
       border = "none";
       break;
     case "floating":
-      bg = card.background ?? "color-mix(in srgb, #15151f 92%, transparent)";
-      border = card.border ? `1px solid ${card.borderColor ?? "rgba(255,255,255,.08)"}` : "none";
+      bg = card.background ?? "color-mix(in srgb, #000000 80%, transparent)";
+      border = card.border ? `1px solid ${card.borderColor ?? "rgba(255,255,255,.05)"}` : "none";
       break;
     case "neon":
-      bg = card.background ?? "color-mix(in srgb, #0a0a12 80%, transparent)";
+      bg = card.background ?? "color-mix(in srgb, #050505 85%, transparent)";
       border = `${card.borderWidth}px solid ${card.borderColor ?? accent}`;
       break;
     case "soft":
-      bg = card.background ?? "color-mix(in srgb, #1a1a26 55%, transparent)";
-      border = card.border ? `1px solid ${card.borderColor ?? "rgba(255,255,255,.06)"}` : "none";
+      bg = card.background ?? "color-mix(in srgb, #0a0a0a 40%, transparent)";
+      border = card.border ? `1px solid ${card.borderColor ?? "rgba(255,255,255,.04)"}` : "none";
       break;
     case "custom":
-      bg = card.background ?? "color-mix(in srgb, #15151f 60%, transparent)";
+      bg = card.background ?? "color-mix(in srgb, #000000 70%, transparent)";
       border = card.border
         ? `${card.borderWidth}px solid ${card.borderColor ?? "rgba(255,255,255,.1)"}`
         : "none";
       break;
     case "glass":
     default:
-      bg = `color-mix(in srgb, #14141f ${Math.round(card.opacity * 55)}%, transparent)`;
-      border = card.border ? `1px solid ${card.borderColor ?? "rgba(255,255,255,.12)"}` : "none";
+      bg = `color-mix(in srgb, #000000 ${Math.round(card.opacity * 60)}%, transparent)`;
+      border = card.border ? `1px solid ${card.borderColor ?? "rgba(255,255,255,.1)"}` : "none";
       break;
   }
 
@@ -156,7 +156,7 @@ export function compileTheme(theme: ThemeConfig): CompiledTheme {
     "--vy-avatar-radius": `${theme.profileCard.avatar.radius}%`,
     "--vy-ring-color": theme.profileCard.avatar.ringColor ?? theme.colors.accent,
     "--vy-link-radius": `${theme.links.radius}px`,
-    "--vy-link-bg": theme.links.background ?? "color-mix(in srgb, #ffffff 6%, transparent)",
+    "--vy-link-bg": theme.links.background ?? "rgba(255, 255, 255, 0.05)",
     "--vy-link-text": theme.links.textColor ?? theme.colors.text,
   };
 
