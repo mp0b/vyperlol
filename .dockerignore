@@ -1,0 +1,44 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+.pnpm-debug.log
+
+# Next.js
+.next
+out
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+.claude
+
+# Testing
+coverage
+playwright-report
+test-results
+
+# Storage
+.storage
+.pgdata
+
+# Build artifacts
+*.tsbuildinfo
+
+# Misc
+.DS_Store
+*.pem

@@ -1,0 +1,424 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* next-themes toggles `.dark` on <html>; wire Tailwind's dark: variant to it. */
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * App-shell design tokens (marketing + dashboard). Public profiles are themed
+ * independently via inline ThemeConfig and never read these variables.
+ * Vyper identity: near-black canvas, electric violet signature, cyan accent.
+ */
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.99 0.002 265);
+  --foreground: oklch(0.18 0.01 265);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 265);
+
+  --primary: oklch(0.55 0.22 285);
+  --primary-foreground: oklch(0.99 0 0);
+
+  --secondary: oklch(0.96 0.005 265);
+  --secondary-foreground: oklch(0.24 0.01 265);
+
+  --muted: oklch(0.96 0.005 265);
+  --muted-foreground: oklch(0.52 0.01 265);
+
+  --accent: oklch(0.7 0.15 210);
+  --accent-foreground: oklch(0.16 0.02 265);
+
+  --destructive: oklch(0.58 0.23 27);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --success: oklch(0.66 0.16 152);
+  --warning: oklch(0.76 0.16 75);
+
+  --border: oklch(0.9 0.005 265);
+  --input: oklch(0.9 0.005 265);
+  --ring: oklch(0.55 0.22 285);
+
+  --brand: oklch(0.6 0.24 285);
+  --brand-2: oklch(0.72 0.16 205);
+
+  --chart-1: oklch(0.6 0.24 285);
+  --chart-2: oklch(0.7 0.16 205);
+  --chart-3: oklch(0.72 0.17 152);
+  --chart-4: oklch(0.77 0.16 75);
+  --chart-5: oklch(0.62 0.23 20);
+}
+
+.dark {
+  --background: oklch(0.155 0.012 265);
+  --foreground: oklch(0.97 0.004 265);
+
+  --card: oklch(0.2 0.014 265);
+  --card-foreground: oklch(0.97 0.004 265);
+  --popover: oklch(0.19 0.014 265);
+  --popover-foreground: oklch(0.97 0.004 265);
+
+  --primary: oklch(0.68 0.2 285);
+  --primary-foreground: oklch(0.16 0.02 285);
+
+  --secondary: oklch(0.26 0.014 265);
+  --secondary-foreground: oklch(0.95 0.004 265);
+
+  --muted: oklch(0.25 0.012 265);
+  --muted-foreground: oklch(0.68 0.01 265);
+
+  --accent: oklch(0.5 0.13 210);
+  --accent-foreground: oklch(0.98 0.004 265);
+
+  --destructive: oklch(0.62 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+
+  --success: oklch(0.7 0.16 152);
+  --warning: oklch(0.8 0.16 78);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.68 0.2 285);
+
+  --brand: oklch(0.7 0.22 285);
+  --brand-2: oklch(0.78 0.15 205);
+
+  --chart-1: oklch(0.7 0.22 285);
+  --chart-2: oklch(0.78 0.15 205);
+  --chart-3: oklch(0.76 0.16 152);
+  --chart-4: oklch(0.82 0.16 78);
+  --chart-5: oklch(0.68 0.21 20);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: color-mix(in oklch, var(--brand) 30%, transparent);
+  }
+  /* Refined scrollbars in the app shell. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+}
+
+@layer utilities {
+  .text-gradient-brand {
+    background-image: linear-gradient(
+      100deg,
+      var(--brand) 0%,
+      var(--brand-2) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, color-mix(in oklch, var(--foreground) 6%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in oklch, var(--foreground) 6%, transparent) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .glass {
+    background: color-mix(in oklch, var(--card) 72%, transparent);
+    backdrop-filter: blur(12px) saturate(1.3);
+    -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+@layer utilities {
+  .animate-infinite-scroll {
+    animation: infinite-scroll 40s linear infinite;
+  }
+}
+
+@keyframes infinite-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50% - 0.75rem)); }
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* ── Vyper dashboard ──────────────────────────────────────────────────────
+   Kept separate from public-profile tokens: the dashboard must stay highly
+   legible while every public page remains individually themed. */
+.vy-dashboard {
+  --vy-dash-canvas: #090908;
+  --vy-dash-panel: rgba(21, 20, 18, 0.82);
+  --vy-dash-panel-strong: rgba(29, 27, 24, 0.92);
+  --vy-dash-border: rgba(255, 244, 225, 0.09);
+  --vy-dash-muted: #a79f95;
+  --vy-dash-accent: #ff9a3d;
+  --vy-dash-accent-2: #f56b4b;
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  color: #fffaf4;
+  background:
+    radial-gradient(70rem 42rem at -5% -15%, rgba(255, 137, 53, 0.12), transparent 60%),
+    radial-gradient(54rem 34rem at 102% 12%, rgba(226, 78, 49, 0.08), transparent 64%),
+    var(--vy-dash-canvas);
+}
+.vy-dashboard::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.34;
+  background-image:
+    linear-gradient(rgba(255, 246, 235, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 246, 235, 0.028) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+.vy-dashboard ::selection { background: rgba(255, 154, 61, 0.32); }
+.vy-dashboard input,
+.vy-dashboard textarea,
+.vy-dashboard select,
+.vy-dashboard [role="combobox"] {
+  color: #fffaf4;
+  background-color: rgba(7, 7, 6, 0.44);
+  border-color: rgba(255, 244, 225, 0.12);
+}
+.vy-dashboard input::placeholder,
+.vy-dashboard textarea::placeholder { color: #827a70; }
+.vy-dashboard [data-radix-popper-content-wrapper] { z-index: 80 !important; }
+
+.vy-dashboard-sidebar {
+  background: linear-gradient(180deg, rgba(18, 17, 15, 0.97), rgba(10, 10, 9, 0.92));
+  border-color: var(--vy-dash-border);
+  box-shadow: 20px 0 80px rgba(0, 0, 0, 0.22);
+}
+.vy-dashboard-header {
+  background: linear-gradient(180deg, rgba(15, 14, 13, 0.86), rgba(15, 14, 13, 0.66));
+  border-color: var(--vy-dash-border);
+  backdrop-filter: blur(22px) saturate(1.35);
+  -webkit-backdrop-filter: blur(22px) saturate(1.35);
+}
+.vy-dashboard-nav-link {
+  color: #a9a197;
+  border: 1px solid transparent;
+}
+.vy-dashboard-nav-link:hover {
+  color: #fffaf4;
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 244, 225, 0.06);
+}
+.vy-dashboard-nav-link[data-active="true"] {
+  color: #fffaf4;
+  border-color: rgba(255, 166, 83, 0.22);
+  background: linear-gradient(135deg, rgba(255, 154, 61, 0.2), rgba(245, 107, 75, 0.08));
+  box-shadow: inset 0 1px rgba(255, 237, 209, 0.07), 0 7px 22px rgba(255, 119, 45, 0.08);
+}
+.vy-dashboard-panel {
+  border: 1px solid var(--vy-dash-border);
+  background: linear-gradient(145deg, rgba(32, 30, 27, 0.74), rgba(15, 15, 14, 0.86));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.035), 0 22px 50px rgba(0, 0, 0, 0.14);
+  backdrop-filter: blur(18px) saturate(1.16);
+  -webkit-backdrop-filter: blur(18px) saturate(1.16);
+}
+.vy-dashboard-panel:hover { border-color: rgba(255, 184, 112, 0.18); }
+.vy-action-primary {
+  color: #1b0d05 !important;
+  border: 1px solid rgba(255, 226, 187, 0.4) !important;
+  background: linear-gradient(135deg, #ffd17f, #ff9a3d 50%, #ef6948) !important;
+  box-shadow: 0 10px 25px rgba(255, 131, 48, 0.2), inset 0 1px rgba(255, 255, 255, 0.45);
+}
+.vy-action-primary:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 14px 38px rgba(255, 131, 48, 0.34), 0 0 0 4px rgba(255, 154, 61, 0.09), inset 0 1px rgba(255, 255, 255, 0.5);
+}
+.vy-action-secondary {
+  color: #fffaf4 !important;
+  border-color: rgba(255, 244, 225, 0.13) !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+}
+.vy-action-secondary:hover { background: rgba(255, 255, 255, 0.08) !important; border-color: rgba(255, 193, 128, 0.28) !important; }
+.vy-builder-tabs {
+  min-height: 52px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 6px;
+  border: 1px solid var(--vy-dash-border);
+  border-radius: 18px;
+  background: rgba(8, 8, 7, 0.48);
+}
+.vy-builder-tabs [role="tab"] {
+  min-height: 38px;
+  color: #a9a197;
+  border-radius: 12px;
+}
+.vy-builder-tabs [role="tab"][data-state="active"] {
+  color: #fffaf4;
+  background: linear-gradient(135deg, rgba(255, 154, 61, 0.22), rgba(245, 107, 75, 0.11));
+  box-shadow: inset 0 1px rgba(255, 243, 224, 0.1), 0 6px 18px rgba(0, 0, 0, 0.16);
+}
+.vy-builder-savebar {
+  position: sticky;
+  top: 4rem;
+  z-index: 20;
+  border-color: var(--vy-dash-border);
+  background: rgba(15, 14, 13, 0.8);
+  backdrop-filter: blur(18px) saturate(1.3);
+  -webkit-backdrop-filter: blur(18px) saturate(1.3);
+}
+
+/* ── Vyper public surfaces ─────────────────────────────────────────────────
+   Public product pages use the same warm Solar language as the dashboard, but
+   stay static: no heavy canvas or permanently running background animation. */
+.vy-public-page {
+  --vy-public-text: #fffaf4;
+  --vy-public-muted: #aaa198;
+  --vy-public-border: rgba(255, 244, 225, 0.1);
+  --vy-public-accent: #ffad5c;
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+  overflow: hidden;
+  color: var(--vy-public-text);
+  background:
+    radial-gradient(56rem 36rem at 8% -10%, rgba(255, 152, 59, 0.13), transparent 64%),
+    radial-gradient(48rem 34rem at 103% 18%, rgba(239, 105, 72, 0.1), transparent 66%),
+    #090908;
+}
+.vy-public-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.38;
+  background-image:
+    linear-gradient(rgba(255, 246, 235, 0.024) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 246, 235, 0.024) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+.vy-public-panel {
+  border: 1px solid var(--vy-public-border);
+  background: linear-gradient(145deg, rgba(34, 31, 27, 0.74), rgba(15, 15, 13, 0.9));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04), 0 24px 60px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(18px) saturate(1.16);
+  -webkit-backdrop-filter: blur(18px) saturate(1.16);
+}
+.vy-public-panel:hover { border-color: rgba(255, 187, 111, 0.24); }
+.vy-public-kicker {
+  color: #ffd6aa;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+.vy-public-action {
+  color: #211006 !important;
+  border: 1px solid rgba(255, 230, 194, 0.38) !important;
+  background: linear-gradient(135deg, #ffd485, #ffad5c 52%, #f07152) !important;
+  box-shadow: 0 12px 28px rgba(255, 145, 53, 0.22), inset 0 1px rgba(255, 255, 255, 0.45);
+}
+.vy-public-action:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 16px 42px rgba(255, 145, 53, 0.37), 0 0 0 4px rgba(255, 173, 92, 0.1), inset 0 1px rgba(255, 255, 255, 0.5);
+}
+.vy-public-action-muted {
+  color: #fffaf4 !important;
+  border: 1px solid var(--vy-public-border) !important;
+  background: rgba(255, 255, 255, 0.045) !important;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.04);
+}
+.vy-public-action-muted:hover { background: rgba(255, 255, 255, 0.08) !important; }
+.vy-public-avatar {
+  background: linear-gradient(145deg, rgba(255, 192, 119, 0.22), rgba(238, 95, 70, 0.13));
+  border: 1px solid rgba(255, 226, 192, 0.16);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.12), 0 8px 22px rgba(0, 0, 0, 0.22);
+}
+
+@media (max-width: 640px) {
+  .vy-builder-tabs { grid-template-columns: 1fr; }
+  .vy-builder-tabs [role="tab"] { justify-content: flex-start; padding-inline: 14px; }
+}
