@@ -34,7 +34,7 @@ export function FieldGroup({
 }) {
   return (
     <section className={cn("vy-dashboard-panel rounded-[1.35rem] p-5 sm:p-6", className)}>
-      {title && <h2 className="mb-5 text-base font-semibold tracking-tight text-[#fffaf4]">{title}</h2>}
+      {title && <h2 className="mb-5 text-base font-semibold tracking-tight text-white">{title}</h2>}
       <div className="grid gap-5">{children}</div>
     </section>
   );

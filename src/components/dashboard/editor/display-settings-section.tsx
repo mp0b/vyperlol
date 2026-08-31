@@ -120,7 +120,7 @@ export function DisplaySettingsSection() {
           >
             {SECTION_TYPES.map((item) => <option key={item.value} value={item.value}>{item.label}</option>)}
           </select>
-          <Button type="button" onClick={addSection} className="bg-orange-500 text-white hover:bg-orange-400"><Plus className="size-4" /> Ajouter une section</Button>
+          <Button type="button" onClick={addSection} className="bg-white text-black hover:bg-white/90"><Plus className="size-4" /> Ajouter une section</Button>
         </div>
         {draft.sections.length === 0 ? (
           <div className="rounded-xl border border-dashed border-white/10 px-4 py-8 text-center text-sm text-muted-foreground">Aucune section supplémentaire n’est affichée.</div>

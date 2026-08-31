@@ -63,7 +63,7 @@ export function AdminUsersClient({
   const getRoleBadge = (role: UserRole) => {
     switch (role) {
       case "OWNER": return <Badge className="bg-purple-500/20 text-purple-300 border-purple-500/30">Propriétaire</Badge>;
-      case "ADMIN": return <Badge className="bg-orange-500/20 text-orange-300 border-orange-500/30">Admin</Badge>;
+      case "ADMIN": return <Badge className="bg-white/20 text-white/70 border-white/20">Admin</Badge>;
       case "MODERATOR": return <Badge className="bg-blue-500/20 text-blue-300 border-blue-500/30">Modérateur</Badge>;
       default: return <Badge variant="outline" className="text-[#968e85] border-white/10">Membre</Badge>;
     }
@@ -101,7 +101,7 @@ export function AdminUsersClient({
                 <td className="px-4 py-4">
                   <div className="flex items-center gap-3">
                     <Avatar className="size-8 border border-white/10">
-                      <AvatarFallback className="bg-orange-500/15 text-xs text-orange-100">
+                      <AvatarFallback className="bg-white/15 text-xs text-white/50">
                         {(user.displayName || user.email).substring(0, 2).toUpperCase()}
                       </AvatarFallback>
                     </Avatar>
@@ -132,7 +132,7 @@ export function AdminUsersClient({
                           <ShieldCheck className="mr-2 size-4 text-blue-400" /> Modérateur
                         </DropdownMenuItem>
                         <DropdownMenuItem onClick={() => handleRoleChange(user.id, "ADMIN")} className="focus:bg-white/10 cursor-pointer">
-                          <ShieldAlert className="mr-2 size-4 text-orange-400" /> Admin
+                          <ShieldAlert className="mr-2 size-4 text-white/80" /> Admin
                         </DropdownMenuItem>
                         
                         {currentUserRole === "OWNER" && (

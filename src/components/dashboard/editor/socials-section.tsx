@@ -33,7 +33,7 @@ export function SocialsSection() {
         >
           {SOCIAL_PROVIDERS.map((item) => <option key={item.key} value={item.key}>{item.label}</option>)}
         </select>
-        <Button type="button" onClick={addSocial} className="bg-orange-500 text-white hover:bg-orange-400">
+        <Button type="button" onClick={addSocial} className="bg-white text-black hover:bg-white/90">
           <Plus className="size-4" /> Ajouter
         </Button>
       </div>
@@ -51,7 +51,7 @@ export function SocialsSection() {
               <div key={social.id} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
                 <div className="mb-3 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2 text-sm font-medium">
-                    <Link2 className="size-4 text-orange-300" />
+                    <Link2 className="size-4 text-white/70" />
                     {definition?.label ?? social.provider}
                   </div>
                   <div className="flex items-center gap-2">

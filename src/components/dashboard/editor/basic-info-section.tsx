@@ -103,7 +103,7 @@ export function BasicInfoSection() {
                 className={cn(
                   "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
                   selected
-                    ? "border-orange-400/70 bg-orange-500/20 text-orange-100"
+                    ? "border-white/40 bg-white/15 text-white"
                     : "border-white/10 bg-white/[0.03] text-muted-foreground hover:border-white/25 hover:text-white",
                 )}
               >

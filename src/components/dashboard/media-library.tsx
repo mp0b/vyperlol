@@ -64,12 +64,12 @@ export function MediaLibrary({ assets }: { assets: Asset[] }) {
         <p className="mt-2 text-gray-400">Importez des images, vidéos ou fichiers audio pour vos profils et vos liens.</p>
       </div>
       <div
-        className={`vy-dashboard-panel rounded-2xl border-2 border-dashed p-10 text-center transition-colors ${dragging ? "border-orange-400 bg-orange-500/10" : "border-white/15"}`}
+        className={`vy-dashboard-panel rounded-2xl border-2 border-dashed p-10 text-center transition-colors ${dragging ? "border-white/40 bg-white/10" : "border-white/15"}`}
         onDragOver={(event) => { event.preventDefault(); setDragging(true); }}
         onDragLeave={() => setDragging(false)}
         onDrop={(event) => { event.preventDefault(); setDragging(false); void upload(event.dataTransfer.files[0]); }}
       >
-        {uploading ? <Loader2 className="mx-auto mb-4 size-10 animate-spin text-orange-300" /> : <UploadCloud className="mx-auto mb-4 size-10 text-orange-300" />}
+        {uploading ? <Loader2 className="mx-auto mb-4 size-10 animate-spin text-white/70" /> : <UploadCloud className="mx-auto mb-4 size-10 text-white/70" />}
         <h3 className="text-lg font-semibold">Déposez un fichier ici</h3>
         <p className="mt-2 text-sm text-muted-foreground">JPG, PNG, WEBP, GIF, AVIF, MP4, WEBM et audio pris en charge selon les limites de votre instance.</p>
         <Button type="button" onClick={() => inputRef.current?.click()} disabled={uploading} className="vy-action-primary mt-5 rounded-xl">{uploading && <Loader2 className="size-4 animate-spin" />} Choisir un fichier</Button>
@@ -89,7 +89,7 @@ export function MediaLibrary({ assets }: { assets: Asset[] }) {
                     // eslint-disable-next-line @next/next/no-img-element
                     <img src={asset.thumbnailUrl ?? asset.url} alt="" className="size-full object-cover" />
                   ) : asset.type === "VIDEO" ? (
-                    <div className="grid size-full place-items-center"><FileVideo className="size-10 text-orange-300" /></div>
+                    <div className="grid size-full place-items-center"><FileVideo className="size-10 text-white/70" /></div>
                   ) : <div className="grid size-full place-items-center text-sm text-muted-foreground">Audio</div>}
                 </div>
                 <div className="space-y-2 p-3"><p className="truncate text-sm font-medium">{asset.originalName ?? "Fichier sans nom"}</p><div className="flex items-center justify-between gap-2 text-xs text-muted-foreground"><span>{formatBytes(asset.sizeBytes)}</span><span>{new Date(asset.createdAt).toLocaleDateString("fr-FR")}</span></div><Button type="button" size="sm" variant="outline" className="vy-action-secondary w-full" onClick={() => void copyUrl(asset.url)}><Copy className="size-3.5" /> Copier l’URL</Button></div>

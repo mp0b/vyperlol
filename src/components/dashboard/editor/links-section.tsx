@@ -36,7 +36,7 @@ export function LinksSection() {
     <FieldGroup title="Liens" className="border-white/10 bg-black/35 text-white backdrop-blur-xl">
       <div className="flex items-start justify-between gap-4">
         <p className="text-sm text-muted-foreground">Ajoutez vos sites, portfolios, communautés et projets. Chaque lien est enregistré dans son ordre d’affichage.</p>
-        <Button type="button" onClick={addLink} className="shrink-0 bg-orange-500 text-white hover:bg-orange-400">
+        <Button type="button" onClick={addLink} className="shrink-0 bg-white text-black hover:bg-white/90">
           <Plus className="size-4" /> Ajouter
         </Button>
       </div>
@@ -49,7 +49,7 @@ export function LinksSection() {
           {draft.links.map((link, index) => (
             <div key={link.id} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
               <div className="mb-3 flex items-center justify-between gap-3">
-                <span className="flex items-center gap-2 text-sm font-medium"><LinkIcon className="size-4 text-orange-300" /> Lien {index + 1}</span>
+                <span className="flex items-center gap-2 text-sm font-medium"><LinkIcon className="size-4 text-white/70" /> Lien {index + 1}</span>
                 <Button
                   type="button"
                   variant="ghost"

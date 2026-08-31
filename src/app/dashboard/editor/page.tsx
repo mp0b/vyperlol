@@ -17,9 +17,9 @@ export default function EditorPage() {
     <div className="text-white">
       <div className="mb-8 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl">
-          <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.17em] text-orange-300"><Sparkles className="size-3.5" /> Éditeur de profil</p>
+          <p className="mb-2 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.17em] text-white/70"><Sparkles className="size-3.5" /> Éditeur de profil</p>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Construisez une page qui vous ressemble.</h2>
-          <p className="mt-3 text-sm leading-6 text-[#a79f95] sm:text-base">Configurez vos liens, votre présence et votre univers visuel. Chaque modification est enregistrée automatiquement et le rendu est à vérifier sur votre page publique.</p>
+          <p className="mt-3 text-sm leading-6 text-white/50 sm:text-base">Configurez vos liens, votre présence et votre univers visuel. Chaque modification est enregistrée automatiquement et le rendu est à vérifier sur votre page publique.</p>
         </div>
         <Button asChild className="vy-action-primary rounded-xl px-5 font-semibold">
           <a href={`/${data.username}`} target="_blank" rel="noopener noreferrer">

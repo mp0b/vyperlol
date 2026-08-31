@@ -188,14 +188,14 @@ export type ProfileCardConfig = z.infer<typeof profileCardSchema>;
 export const DEFAULT_THEME: ThemeConfig = themeConfigSchema.parse({
   background: {
     type: "animated-gradient",
-    color: "#000000",
+    color: "#090908",
     gradient: {
       type: "linear",
       angle: 145,
       stops: [
-        { color: "#000000", at: 0 },
-        { color: "#050505", at: 56 },
-        { color: "#111111", at: 100 },
+        { color: "#090908", at: 0 },
+        { color: "#241109", at: 56 },
+        { color: "#120d0a", at: 100 },
       ],
     },
     overlayColor: "#000000",

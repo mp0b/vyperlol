@@ -21,7 +21,7 @@ export default async function BadgesPage() {
       {badges.length === 0 ? (
         <Card className="vy-dashboard-panel border text-white">
           <CardContent className="flex min-h-64 flex-col items-center justify-center px-6 text-center">
-            <div className="mb-5 rounded-2xl border border-orange-400/20 bg-orange-500/10 p-4"><LockKeyhole className="size-8 text-orange-300" /></div>
+            <div className="mb-5 rounded-2xl border border-white/40/20 bg-white/10 p-4"><LockKeyhole className="size-8 text-white/70" /></div>
             <h3 className="text-xl font-semibold">Pas encore de badge</h3>
             <p className="mt-2 max-w-md text-sm text-muted-foreground">Quand vous obtiendrez un badge — vérification, contribution ou programme spécial — il apparaîtra ici et pourra être affiché sur votre profil.</p>
           </CardContent>
@@ -29,22 +29,22 @@ export default async function BadgesPage() {
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {badges.map(({ id, visible, grantedAt, badge }) => (
-            <Card key={id} className="vy-dashboard-panel group relative overflow-hidden border text-white transition-colors hover:border-orange-400/35">
-              <div className="absolute -right-10 -top-10 size-36 rounded-full bg-orange-500/10 blur-3xl" />
+            <Card key={id} className="vy-dashboard-panel group relative overflow-hidden border text-white transition-colors hover:border-white/40/35">
+              <div className="absolute -right-10 -top-10 size-36 rounded-full bg-white/10 blur-3xl" />
               <CardHeader className="relative flex-row items-start gap-4 space-y-0">
-                <div className="rounded-2xl border border-white/10 bg-black/30 p-3"><BadgeCheck className="size-6 text-orange-300" /></div>
+                <div className="rounded-2xl border border-white/10 bg-black/30 p-3"><BadgeCheck className="size-6 text-white/70" /></div>
                 <div className="min-w-0 flex-1"><CardTitle>{badge.name}</CardTitle><CardDescription className="mt-1 text-gray-400">{badge.description ?? "Badge Vyper"}</CardDescription></div>
               </CardHeader>
               <CardContent className="relative flex items-center justify-between gap-4 text-xs text-muted-foreground">
                 <span>Obtenu le {grantedAt.toLocaleDateString("fr-FR")}</span>
-                <span className={visible ? "text-orange-200" : "text-muted-foreground"}>{visible ? "Affiché" : "Masqué"}</span>
+                <span className={visible ? "text-white/60" : "text-muted-foreground"}>{visible ? "Affiché" : "Masqué"}</span>
               </CardContent>
             </Card>
           ))}
         </div>
       )}
 
-      <p className="flex items-center gap-2 text-xs text-muted-foreground"><Sparkles className="size-3.5 text-orange-300" />Les badges visibles sont automatiquement intégrés à votre page publique.</p>
+      <p className="flex items-center gap-2 text-xs text-muted-foreground"><Sparkles className="size-3.5 text-white/70" />Les badges visibles sont automatiquement intégrés à votre page publique.</p>
     </div>
   );
 }

@@ -76,11 +76,11 @@ export function ThemeSettingsSection() {
                 onClick={() => mutate((next) => { next.theme = structuredClone(preset.config); })}
                 className={cn(
                   "group relative overflow-hidden rounded-2xl border p-4 text-left transition-all",
-                  selected ? "border-orange-400/80 bg-orange-500/10" : "border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.06]",
+                  selected ? "border-white/40/80 bg-white/10" : "border-white/10 bg-white/[0.03] hover:border-white/25 hover:bg-white/[0.06]",
                 )}
               >
                 <div className="mb-5 h-14 rounded-xl border border-white/10" style={{ background: `linear-gradient(135deg, ${preset.config.background.color}, ${preset.config.colors.accent})` }} />
-                <div className="flex items-center justify-between gap-2"><span className="font-medium">{preset.name}</span>{selected && <Check className="size-4 text-orange-300" />}</div>
+                <div className="flex items-center justify-between gap-2"><span className="font-medium">{preset.name}</span>{selected && <Check className="size-4 text-white/70" />}</div>
                 <span className="mt-1 block text-xs text-muted-foreground">{preset.description}</span>
               </button>
             );
@@ -147,7 +147,7 @@ export function ThemeSettingsSection() {
           </div>
           <SliderField label="Graisse" value={theme.typography.weight} min={100} max={900} step={100} onChange={(value) => mutate((next) => { next.theme.typography.weight = value; })} />
           <SliderField label="Espacement des lettres" value={theme.typography.letterSpacing} min={-2} max={10} step={0.5} suffix=" px" onChange={(value) => mutate((next) => { next.theme.typography.letterSpacing = value; })} />
-          <div className="rounded-xl border border-dashed border-white/10 bg-white/[0.02] p-4 text-sm text-muted-foreground"><Sparkles className="mr-2 inline size-4 text-orange-300" />Les polices sélectionnées sont chargées depuis Google Fonts sur votre page publique.</div>
+          <div className="rounded-xl border border-dashed border-white/10 bg-white/[0.02] p-4 text-sm text-muted-foreground"><Sparkles className="mr-2 inline size-4 text-white/70" />Les polices sélectionnées sont chargées depuis Google Fonts sur votre page publique.</div>
         </FieldGroup>
 
         <FieldGroup title="Carte de profil" className="border-white/10 bg-black/35 text-white backdrop-blur-xl">
@@ -202,7 +202,7 @@ export function ThemeSettingsSection() {
           </div>
         </FieldGroup>
       </div>
-      <div className="rounded-2xl border border-orange-400/20 bg-orange-500/[0.06] p-4 text-sm text-orange-50"><Palette className="mr-2 inline size-4 text-orange-300" />Toutes les personnalisations sont appliquées à la page publique après l’enregistrement automatique. Utilisez « Voir mon profil en direct » pour vérifier le rendu réel.</div>
+      <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-4 text-sm text-white/70"><Palette className="mr-2 inline size-4 text-white/70" />Toutes les personnalisations sont appliquées à la page publique après l’enregistrement automatique. Utilisez « Voir mon profil en direct » pour vérifier le rendu réel.</div>
     </div>
   );
 }

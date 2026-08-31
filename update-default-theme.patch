@@ -1,0 +1,29 @@
+--- src/lib/theme/types.ts
++++ src/lib/theme/types.ts
+@@ -107,17 +107,17 @@
+ export const DEFAULT_THEME: ThemeConfig = themeConfigSchema.parse({
+   background: {
+     type: "animated-gradient",
+-    color: "#090908",
++    color: "#000000",
+     gradient: {
+       type: "linear",
+       angle: 145,
+       stops: [
+-        { color: "#090908", at: 0 },
+-        { color: "#241109", at: 56 },
+-        { color: "#120d0a", at: 100 },
++        { color: "#000000", at: 0 },
++        { color: "#050505", at: 56 },
++        { color: "#111111", at: 100 },
+       ],
+     },
+-    overlayColor: "#000000",
++    overlayColor: "#000000",
+     overlayOpacity: 0.42,
+     effect: "vignette",
+   },
+-  colors: { accent: "#ffad5c", text: "#fffaf2", textSecondary: "#c5b8ab", icon: "#fff4e4" },
++  colors: { accent: "#ffffff", text: "#ffffff", textSecondary: "#a0a0a0", icon: "#ffffff" },
+   typography: { fontFamily: "DM Sans", source: "google", weight: 500 },
+   profileCard: {
