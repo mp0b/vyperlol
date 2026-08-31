@@ -13,13 +13,21 @@ export interface StoredObject {
   url: string;
 }
 
-const LOCAL_ROOT = resolve(process.cwd(), env.LOCAL_STORAGE_DIR);
+// Lazy-resolve to avoid Next.js static analysis tracing the entire project tree.
+let _localRoot: string | undefined;
+function getLocalRoot(): string {
+  if (!_localRoot) {
+    _localRoot = join(/*turbopackIgnore: true*/ process.cwd(), env.LOCAL_STORAGE_DIR);
+  }
+  return _localRoot;
+}
 
 function localPath(key: string): string {
+  const root = getLocalRoot();
   // key is server-generated (safe chars only); still guard against traversal.
   const safe = key.replace(/[^a-zA-Z0-9._/-]/g, "");
-  const full = resolve(/*turbopackIgnore: true*/ LOCAL_ROOT, safe);
-  if (!full.startsWith(LOCAL_ROOT)) throw new Error("Invalid storage key");
+  const full = join(/*turbopackIgnore: true*/ root, safe);
+  if (!full.startsWith(root)) throw new Error("Invalid storage key");
   return full;
 }
 
@@ -91,4 +99,4 @@ export async function deleteObject(key: string): Promise<void> {
   }
 }
 
-export { LOCAL_ROOT, localPath };
+export { getLocalRoot, localPath };
