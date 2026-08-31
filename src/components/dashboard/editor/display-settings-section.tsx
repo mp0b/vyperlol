@@ -82,14 +82,9 @@ export function DisplaySettingsSection() {
         <TextField
           label="URL de la musique (MP3/Audio)"
           description="Lien direct vers un fichier audio. La musique se lance après le clic."
-          value={draft.musicTracks?.[0]?.audioUrl ?? ""}
+          value={draft.settings.config.audioUrl ?? ""}
           onChange={(value) => mutate((next) => {
-            if (value) {
-              if (next.musicTracks.length > 0) next.musicTracks[0].audioUrl = value;
-              else next.musicTracks.push({ id: newId(), title: "BGM", artist: null, coverUrl: null, audioUrl: value, duration: null });
-            } else {
-              next.musicTracks = [];
-            }
+            next.settings.config.audioUrl = value || undefined;
           })}
         />
       </FieldGroup>

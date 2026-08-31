@@ -33,6 +33,7 @@ export const settingsConfigSchema = z.object({
     })
     .default({}),
   discordId: z.string().max(32).optional(),
+  audioUrl: safeMediaUrl.optional(),
   clickImageUrl: safeMediaUrl.optional(),
 });
 

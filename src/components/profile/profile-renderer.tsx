@@ -58,7 +58,7 @@ export function ProfileRenderer({
       <ProfileIntro
         settings={settings.config}
         preview={preview}
-        musicUrl={profile.musicTracks?.[0]?.audioUrl}
+        musicUrl={settings.config.audioUrl || profile.musicTracks?.[0]?.audioUrl}
       />
       <ProfileBackground theme={theme} animationsEnabled={animationsEnabled} preview={preview} />
       {!preview && theme.effects.cursor !== "default" && animationsEnabled ? (
