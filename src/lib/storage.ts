@@ -18,7 +18,7 @@ const LOCAL_ROOT = resolve(process.cwd(), env.LOCAL_STORAGE_DIR);
 function localPath(key: string): string {
   // key is server-generated (safe chars only); still guard against traversal.
   const safe = key.replace(/[^a-zA-Z0-9._/-]/g, "");
-  const full = resolve(LOCAL_ROOT, safe);
+  const full = resolve(/*turbopackIgnore: true*/ LOCAL_ROOT, safe);
   if (!full.startsWith(LOCAL_ROOT)) throw new Error("Invalid storage key");
   return full;
 }

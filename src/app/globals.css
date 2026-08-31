@@ -236,7 +236,7 @@
   isolation: isolate;
   min-height: 100svh;
   color: #ffffff;
-  background: var(--vy-dash-canvas);
+  background: transparent;
 }
 .vy-dashboard ::selection { background: rgba(255, 255, 255, 0.2); }
 .vy-dashboard input,
