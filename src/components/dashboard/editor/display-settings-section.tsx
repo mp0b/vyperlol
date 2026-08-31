@@ -61,6 +61,39 @@ export function DisplaySettingsSection() {
         <SwitchField label="Animations sur le profil" checked={draft.settings.animationsEnabled} onChange={(value) => mutate((next) => { next.settings.animationsEnabled = value; })} />
       </FieldGroup>
 
+      <FieldGroup title="Expérience & Audio" className="border-white/10 bg-black/35 text-white backdrop-blur-xl">
+        <SwitchField 
+          label="Écran 'Click to enter'" 
+          description="Affiche un écran noir demandant au visiteur de cliquer (requis pour lire de l'audio automatiquement)."
+          checked={draft.settings.config.intro?.enabled ?? false} 
+          onChange={(value) => mutate((next) => { 
+            if (!next.settings.config.intro) next.settings.config.intro = { enabled: value, text: "click to enter", buttonText: "enter", blur: 16, playSound: false };
+            else next.settings.config.intro.enabled = value;
+          })} 
+        />
+        {(draft.settings.config.intro?.enabled) && (
+          <TextField
+            label="Texte de l'écran d'entrée"
+            value={draft.settings.config.intro?.text ?? "click to enter"}
+            maxLength={60}
+            onChange={(value) => mutate((next) => { if (next.settings.config.intro) next.settings.config.intro.text = value; })}
+          />
+        )}
+        <TextField
+          label="URL de la musique (MP3/Audio)"
+          description="Lien direct vers un fichier audio. La musique se lance après le clic."
+          value={draft.musicTracks?.[0]?.audioUrl ?? ""}
+          onChange={(value) => mutate((next) => {
+            if (value) {
+              if (next.musicTracks.length > 0) next.musicTracks[0].audioUrl = value;
+              else next.musicTracks.push({ id: newId(), title: "BGM", artist: null, coverUrl: null, audioUrl: value, duration: null });
+            } else {
+              next.musicTracks = [];
+            }
+          })}
+        />
+      </FieldGroup>
+
       <FieldGroup title="Référencement" className="border-white/10 bg-black/35 text-white backdrop-blur-xl">
         <TextField
           label="Titre de l’onglet"

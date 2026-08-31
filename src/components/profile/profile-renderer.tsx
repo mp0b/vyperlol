@@ -7,6 +7,8 @@ import { ProfileBackground } from "./profile-background";
 import { SectionRenderer } from "./section-renderer";
 import { SocialLinks } from "./social-links";
 import { CursorFx } from "./cursor-fx";
+import { ProfileIntro } from "./profile-intro";
+import { DiscordPresence } from "./discord-presence";
 import { formatCompactNumber } from "@/lib/utils";
 
 /**
@@ -53,6 +55,11 @@ export function ProfileRenderer({
         />
       ) : null}
 
+      <ProfileIntro
+        settings={settings.config}
+        preview={preview}
+        musicUrl={profile.musicTracks?.[0]?.audioUrl}
+      />
       <ProfileBackground theme={theme} animationsEnabled={animationsEnabled} preview={preview} />
       {!preview && theme.effects.cursor !== "default" && animationsEnabled ? (
         <CursorFx kind={theme.effects.cursor} color={theme.colors.accent} imageUrl={theme.effects.cursorImageUrl} />
@@ -93,7 +100,7 @@ export function ProfileRenderer({
             )}
           </div>
 
-          <div className="vy-name" data-fx={theme.effects.textEffect}>
+          <div className="vy-name" data-fx={theme.effects.textEffect} data-text={name}>
             {name}
           </div>
           <div className="vy-username">@{profile.username}</div>
@@ -140,6 +147,10 @@ export function ProfileRenderer({
           {showHeaderBio ? (
             <div className="vy-bio">{renderInlineMarkdown(profile.bio!)}</div>
           ) : null}
+
+          {settings.config.discordId && (
+            <DiscordPresence discordId={settings.config.discordId} />
+          )}
 
           {showHeaderSocials ? <SocialLinks links={profile.socialLinks} /> : null}
 

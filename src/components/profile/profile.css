@@ -125,6 +125,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   min-height: 100svh;
   padding: clamp(24px, 7vh, 84px) 16px;
 }
@@ -421,6 +422,56 @@
 @keyframes vy-shimmer { to { background-position: -200% 0; } }
 .vy-name[data-fx="pulse"] { animation: vy-pulse 2.2s ease-in-out infinite; }
 @keyframes vy-pulse { 50% { opacity: 0.6; } }
+
+.vy-name[data-fx="typewriter"] {
+  display: inline-flex;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.1em solid var(--vy-accent);
+  animation: vy-typewriter 2.5s steps(30, end) infinite alternate, vy-blink-caret 0.7s step-end infinite;
+}
+@keyframes vy-typewriter {
+  0%, 10% { width: 0; }
+  90%, 100% { width: 100%; }
+}
+@keyframes vy-blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--vy-accent); }
+}
+
+.vy-name[data-fx="glitch"] {
+  position: relative;
+}
+.vy-name[data-fx="glitch"]::before,
+.vy-name[data-fx="glitch"]::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+.vy-name[data-fx="glitch"]::before {
+  left: 2px;
+  text-shadow: -2px 0 red;
+  clip: rect(24px, 550px, 90px, 0);
+  animation: vy-glitch-anim 3s infinite linear alternate-reverse;
+}
+.vy-name[data-fx="glitch"]::after {
+  left: -2px;
+  text-shadow: -2px 0 blue;
+  clip: rect(85px, 550px, 140px, 0);
+  animation: vy-glitch-anim 2.5s infinite linear alternate-reverse;
+}
+@keyframes vy-glitch-anim {
+  0% { clip: rect(10px, 9999px, 86px, 0); }
+  20% { clip: rect(66px, 9999px, 12px, 0); }
+  40% { clip: rect(23px, 9999px, 55px, 0); }
+  60% { clip: rect(44px, 9999px, 77px, 0); }
+  80% { clip: rect(90px, 9999px, 14px, 0); }
+  100% { clip: rect(22px, 9999px, 66px, 0); }
+}
 
 /* Embedded editor preview: contain the fixed background layers inside the frame
    instead of letting them cover the whole dashboard. */

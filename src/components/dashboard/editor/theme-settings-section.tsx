@@ -28,6 +28,9 @@ const BACKGROUND_OPTIONS = [
 const EFFECT_OPTIONS = [
   { value: "none", label: "Aucun" },
   { value: "particles", label: "Particules" },
+  { value: "snow", label: "Neige" },
+  { value: "matrix", label: "Matrix" },
+  { value: "stars", label: "Étoiles" },
   { value: "aurora", label: "Aurore" },
   { value: "grid", label: "Grille" },
   { value: "waves", label: "Ondes" },
@@ -126,9 +129,19 @@ export function ThemeSettingsSection() {
               onChange={(value) => mutate((next) => { next.theme.typography.transform = value; })}
             />
             <SelectField
-              label="Effet de texte"
+              label="Effet de texte (Pseudo)"
               value={theme.effects.textEffect}
-              options={[{ value: "none", label: "Aucun" }, { value: "gradient", label: "Dégradé" }, { value: "glow", label: "Halo" }, { value: "glitch", label: "Glitch" }, { value: "shimmer", label: "Reflet" }, { value: "wave", label: "Vague" }]}
+              options={[
+                { value: "none", label: "Aucun" },
+                { value: "gradient", label: "Dégradé" },
+                { value: "glow", label: "Halo" },
+                { value: "glitch", label: "Glitch" },
+                { value: "shimmer", label: "Reflet" },
+                { value: "wave", label: "Vague" },
+                { value: "typewriter", label: "Machine à écrire" },
+                { value: "rainbow", label: "Arc-en-ciel" },
+                { value: "pulse", label: "Pulsation" },
+              ]}
               onChange={(value) => mutate((next) => { next.theme.effects.textEffect = value; })}
             />
           </div>
@@ -157,7 +170,36 @@ export function ThemeSettingsSection() {
             options={[{ value: "none", label: "Aucune" }, { value: "lift", label: "Élévation" }, { value: "glow", label: "Halo" }, { value: "scale", label: "Zoom" }, { value: "slide", label: "Glissement" }]}
             onChange={(value) => mutate((next) => { next.theme.links.hoverAnimation = value; })}
           />
-          <ColorField label="Fond des liens" value={theme.links.background ?? "#171720"} onChange={(value) => mutate((next) => { next.theme.links.background = value; })} />
+          <ColorField label="Fond des liens" value={theme.links.background ?? "rgba(255, 255, 255, 0.05)"} onChange={(value) => mutate((next) => { next.theme.links.background = value; })} />
+        </FieldGroup>
+
+        <FieldGroup title="Curseur & Effets" className="border-white/10 bg-black/35 text-white backdrop-blur-xl lg:col-span-2">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <SelectField
+              label="Style du Curseur"
+              value={theme.effects.cursor}
+              options={[
+                { value: "default", label: "Par défaut" },
+                { value: "glow", label: "Lumière (Glow)" },
+                { value: "particles", label: "Particules" },
+                { value: "trail", label: "Traînée (Trail)" },
+                { value: "sparkles", label: "Étincelles" },
+                { value: "custom", label: "Image Personnalisée" },
+              ]}
+              onChange={(value) => mutate((next) => { next.theme.effects.cursor = value; })}
+            />
+            {theme.effects.cursor === "custom" && (
+              <ImageField
+                label="Image du Curseur (PNG)"
+                value={theme.effects.cursorImageUrl ?? ""}
+                onChange={(value) => mutate((next) => { next.theme.effects.cursorImageUrl = value; })}
+              />
+            )}
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 mt-2">
+            <SwitchField label="Effet d'ondulation (Ripple)" checked={theme.effects.ripple} onChange={(value) => mutate((next) => { next.theme.effects.ripple = value; })} />
+            <SwitchField label="Réduire les mouvements (Reduced Motion)" checked={theme.effects.reducedMotion} onChange={(value) => mutate((next) => { next.theme.effects.reducedMotion = value; })} />
+          </div>
         </FieldGroup>
       </div>
       <div className="rounded-2xl border border-orange-400/20 bg-orange-500/[0.06] p-4 text-sm text-orange-50"><Palette className="mr-2 inline size-4 text-orange-300" />Toutes les personnalisations sont appliquées à la page publique après l’enregistrement automatique. Utilisez « Voir mon profil en direct » pour vérifier le rendu réel.</div>

@@ -32,6 +32,7 @@ export const settingsConfigSchema = z.object({
       vignette: z.boolean().default(true),
     })
     .default({}),
+  discordId: z.string().max(32).optional(),
   clickImageUrl: safeMediaUrl.optional(),
 });
 

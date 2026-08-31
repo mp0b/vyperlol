@@ -80,6 +80,13 @@ export function BasicInfoSection() {
           onChange={(value) => mutate((next) => { next.profile.statusText = value; })}
         />
       </div>
+      <TextField
+        label="Discord ID (Rich Presence Live)"
+        value={draft.settings.config.discordId ?? ""}
+        maxLength={32}
+        placeholder="ex: 123456789012345678"
+        onChange={(value) => mutate((next) => { next.settings.config.discordId = value || undefined; })}
+      />
       <div className="grid gap-2">
         <div className="flex items-center justify-between gap-3">
           <span className="text-sm font-medium">Centres d’intérêt</span>
